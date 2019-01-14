@@ -31,6 +31,7 @@ Route::post('/user/login', 'UserController@login');
 
   Route::get('admin/inquiry/detail/{id}', 'AdminInquiryController@detail')->name('inquiry.detail');
 
+Route::get('searchajax',array('as'=>'searchajax','uses'=>'AdminInquiryController@autoComplete'));
 
 });
 

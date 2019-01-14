@@ -24,6 +24,23 @@ public function index(Request $request)
 
 }
 
+public function autoComplete(Request $request) {
+      $query = $request->get('term','');
+
+
+      $products=inquiry::where('name','LIKE','%'.$query.'%')->get();
+
+      $data=array();
+
+      foreach ($products as $product) {
+              $data[]=array('value'=>$product->name,'id'=>$product->id);
+      }
+      if(count($data))
+           return $data;
+      else
+          return ['value'=>'No Result Found','id'=>''];
+  }
+
 /**
  * Display the specified resource.
  *
