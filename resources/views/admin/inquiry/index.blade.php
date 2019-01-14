@@ -4,10 +4,10 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Customize News</h2>
+            <h2>Inquiry Lists</h2>
         </div>
         <div class="pull-right">
-          <a href="<?= URL::to("user/logout") ?>">Logout</a> 
+          <a href="<?= URL::to("user/logout") ?>">Logout</a>
         </div>
     </div>
 </div>

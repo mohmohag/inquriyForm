@@ -18,7 +18,7 @@ class AdminInquiryController extends Controller
 */
 public function index(Request $request)
 {
-   $inquiry = inquiry::orderBy('id','DESC')->paginate(20);
+   $inquiry = inquiry::orderBy('id','ASC')->paginate(20);
 
    return view('admin.inquiry.index',compact('inquiry'));
 
@@ -32,8 +32,8 @@ public function index(Request $request)
  */
 public function detail($id)
 {
-    $item = inquiry::find($id);
-    return view('admin.inquiry.detail',compact('item'));
+    $inquiry = inquiry::find($id);
+    return view('admin.inquiry.detail',compact('inquiry'));
 }
 
 
