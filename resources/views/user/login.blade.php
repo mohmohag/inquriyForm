@@ -1,6 +1,6 @@
 @extends("template")
 
-@section("main")
+@section('content')
 <h2>Login</h2>
 
 
@@ -21,4 +21,4 @@
 	<input type="submit" value="Login">
 	<a href='<?= URL::to('user/register') ?>'>Register</a>
 </form>
-@stop
+@endsection

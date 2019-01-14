@@ -14,8 +14,7 @@ use App\User;
 class UserController extends Controller {
 
 	function index() {
-		if(Auth::check())
-			return redirect("user/profile");
+
 
 		return view("user/login");
 	}

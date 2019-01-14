@@ -7,6 +7,7 @@
             <h2>Customize News</h2>
         </div>
         <div class="pull-right">
+          <a href="<?= URL::to("user/logout") ?>">Logout</a> 
         </div>
     </div>
 </div>
@@ -30,12 +31,13 @@
     <td>{!! $item->name !!}</td>
     <td >{!! $item->email !!}</td>
     <td>
-      <a href="{{ route('inquiry.detail',$item->id)}}" class="btn btn- 
+      <a href="{{ route('inquiry.detail',$item->id)}}" class="btn btn-
                         primary">Detail</a></td>
     </td>
 </tr>
 @endforeach
 </table>
+
 {!! $inquiry->render() !!}
 
 @endsection
