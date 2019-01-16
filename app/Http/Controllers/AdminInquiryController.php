@@ -9,8 +9,11 @@ use Mail;
 use Illuminate\Support\Facades\Session;
 
 
+
 class AdminInquiryController extends Controller
 {
+
+
   /**
 * Display a listing of the resource.
 *
@@ -18,9 +21,13 @@ class AdminInquiryController extends Controller
 */
 public function index(Request $request)
 {
-   $inquiry = inquiry::orderBy('id','ASC')->paginate(20);
-
-   return view('admin.inquiry.index',compact('inquiry'));
+  $inquiry = Inquiry::sortable()->paginate(20);
+        return view('admin.inquiry.index',compact('inquiry'));
+   // $inquiry = inquiry::orderBy('id','ASC')->paginate(20);
+   // $inquiryByName = inquiry::orderBy('name','ASC')->paginate(20);
+   // $inquiryByDate = inquiry::orderBy('created_at','ASC')->paginate(20);
+   //
+   // return view('admin.inquiry.index',compact('inquiry','inquiryByName','inquiryByDate'));
 
 }
 

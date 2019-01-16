@@ -1,5 +1,9 @@
 @extends('template')
  @section('content')
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+ <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
@@ -7,7 +11,6 @@
         </div>
         <div class="pull-right">
           <a href="<?= URL::to("user/logout") ?>">Logout</a>
-            {!! Form::text('search_text', null, array('placeholder' => 'Search Text','class' => 'form-control','id'=>'search_text')) !!}
         </div>
     </div>
 </div>
@@ -21,8 +24,10 @@
 <table class="table table-bordered">
     <tr>
         <th>No</th>
-        <th>Name</th>
+        <th>@sortablelink('name')</th>
         <th>Email</th>
+        <th>@sortablelink('created_at')</th>
+
         <th width="280px">Action</th>
     </tr>
 @foreach ($inquiry as $key => $item)
@@ -30,6 +35,8 @@
     <td>{{ $item->id}}</td>
     <td>{!! $item->name !!}</td>
     <td >{!! $item->email !!}</td>
+    <td >{!! $item->created_at !!}</td>
+
     <td>
       <a href="{{ route('inquiry.detail',$item->id)}}" class="btn btn-
                         primary">Detail</a></td>
@@ -39,29 +46,4 @@
 </table>
 
 {!! $inquiry->render() !!}
-<link href="http://demo.expertphp.in/css/jquery.ui.autocomplete.css" rel="stylesheet">
-<script src="http://demo.expertphp.in/js/jquery.js"></script>
-<script src="http://demo.expertphp.in/js/jquery-ui.min.js"></script>
-<script type="text/javascript">
-
-src = "{{ route('searchajax') }}";
-console.log("this ");
-$("#search_text").autocomplete({
-  source: function(request, response) {
-      $.ajax({
-          url: src,
-          dataType: "json",
-          data: {
-              term : request.term
-          },
-          success: function(data) {
-              response(data);
-
-          }
-      });
-  },
-  minLength: 3,
-
-});
-</script>
 @endsection

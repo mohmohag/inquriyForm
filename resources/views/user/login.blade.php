@@ -19,6 +19,5 @@
 	<br><br>
 
 	<input type="submit" value="Login">
-	<a href='<?= URL::to('user/register') ?>'>Register</a>
 </form>
 @endsection
