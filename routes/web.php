@@ -19,7 +19,7 @@ Route::group(['middleware' => ['web']], function () {
 
 	Route::get('/', 'UserController@index');
 	Route::get('/user/login', 'UserController@index');
-Route::post('/user/login', 'UserController@login');
+Route::post('/user/login', 'UserController@login')->name('login');
 
 
 	Route::get('/user/logout', 'UserController@logout');
@@ -27,7 +27,7 @@ Route::post('/user/login', 'UserController@login');
 	Route::get('/user/delete/{id}', 'UserController@delete');
 
 
-  Route::get('admin/inquiry/list', 'AdminInquiryController@index')->name('inquiry.index');;
+  Route::get('admin/inquiry/list', 'AdminInquiryController@index')->name('inquiry.index');
 
   Route::get('admin/inquiry/detail/{id}', 'AdminInquiryController@detail')->name('inquiry.detail');
 
