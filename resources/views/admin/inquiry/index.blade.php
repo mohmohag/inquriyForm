@@ -7,10 +7,10 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Inquiry Lists</h2>
+            <h2>お問い合わせ一覧</h2>
         </div>
         <div class="pull-right">
-          <a href="<?= URL::to("user/logout") ?>">Logout</a>
+          <a href="<?= URL::to("user/logout") ?>">ログアウト</a>
         </div>
     </div>
 </div>

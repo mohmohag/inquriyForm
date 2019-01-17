@@ -71,16 +71,19 @@ public function back(){
 
 
     public function store(Request $request){
-      // the message
-      Mail::send('inquiry.mail', [], function ($mail) {
-             $mail->to('example@email.com')
-                 ->from('todoreminder@gmail.com', 'To-do Reminder')
-                 ->subject('Due tomorrow on your To-do list!');
-         }
-         );
+    //   Mail::send('inquiry.mail
+    //     ',
+    //     array(
+    //         'name' => $request->get('name'),
+    //         'email' => $request->get('email'),
+    //         'user_message' => $request->get('message')
+    //     ), function($message)
+    // {
+    //
+    //     $message->to('love.yoyohoho@gmail.com', 'Admin')->subject('TODOParrot Feedback');
+    // });
 
-
-         $this->info('Reminder email sent successfully!');
+        return view('inquiry.complete');
 
 
    }

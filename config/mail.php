@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'driver' => env('MAIL_DRIVER', 'smtp'),
+    'driver' =>  'smtp',
 
     /*
     |--------------------------------------------------------------------------
@@ -29,7 +29,8 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+     'host' => 'smtp.gmail.com',
+
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +43,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 587),
+    'port' => 465,
 
     /*
     |--------------------------------------------------------------------------
@@ -71,7 +72,7 @@ return [
     |
     */
 
-    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+    'encryption' => 'ssl',
 
     /*
     |--------------------------------------------------------------------------
@@ -83,10 +84,10 @@ return [
     | connection. You may also set the "password" value below this one.
     |
     */
+    'username' => 'mohmohaung1010@gmail.com',
 
-    'username' => env('MAIL_USERNAME'),
+    'password' => 'aungmohmoh12345',
 
-    'password' => env('MAIL_PASSWORD'),
 
     /*
     |--------------------------------------------------------------------------
