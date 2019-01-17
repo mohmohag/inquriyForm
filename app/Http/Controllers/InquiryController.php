@@ -11,83 +11,84 @@ use Illuminate\Support\Facades\Session;
 
 class InquiryController extends Controller
 {
-  protected $request;
+    protected $request;
 
-    public function __construct(Request $request) {
+    public function __construct(Request $request)
+    {
         $this->request = $request;
     }
 
 
     //
-    public function input(){
+    public function input()
+    {
 
-          return view('inquiry.input');
-}
-public function back(){
+        return view('inquiry.input');
+    }
 
-  if(Session::has('me')){
-    $inquiry = Session::get('me');
-    return view('inquiry.back')->with('inquiryform',$inquiry);
-}
+    public function back()
+    {
+
+        if (Session::has('inquiryDetail')) {
+                $inquiry = Session::get('inquiryDetail');
+            return view('inquiry.back')->with('inquiryform', $inquiry);
+        }
 
     }
 
     public function confirm(Request $request)
     {
-  Session::put('me', $request->all());
+        Session::put('inquiryDetail', $request->all());
 
-      // $inquiryform = $this->request->all();
-      $validator = Validator::make($request->all(), [
-                'name' => 'required',
-                'email' => 'required',
-                'url' => 'required',
-                'message' => 'required',
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|unique:inquiry|email',
+            'email' => 'required|unique:inquiry|email',
+            'url' => 'required',
+            'message' => 'required',
 
-            ]);
+        ]);
 
-            if ($validator->fails()) {
-                return redirect('inquiry/input')
-                              ->withErrors($validator)
-                            ->withInput
-                            ();
-            } else{
+        if ($validator->fails()) {
+            return redirect('inquiry/input')
+                ->withErrors($validator)
+                ->withInput
+                ();
+        } else {
 
-              $inquiry = new Inquiry;
-                          $inquiry->name       = $request->name;
-                          $inquiry->email      =$request->email;
-                          $inquiry->url       = $request->url;
-                          $inquiry->detail       = $request->message;
-                          $inquiry->gender = $request->gender;
-                          $inquiry->save();
-                          //$data = array('name'=>"Virat Gandhi");
+            $inquiry = new Inquiry;
+            $inquiry->name = $request->name;
+            $inquiry->email = $request->email;
+            $inquiry->url = $request->url;
+            $inquiry->detail = $request->message;
+            $inquiry->gender = $request->gender;
+            $inquiry->save();
+            //$data = array('name'=>"Virat Gandhi");
 
-                            return view('inquiry.confirm')->with('inquiryform',$inquiry);
+            return view('inquiry.confirm')->with('inquiryform', $inquiry);
 
-}
-}
-
-
+        }
+    }
 
 
-
-    public function store(Request $request){
-    //   Mail::send('inquiry.mail
-    //     ',
-    //     array(
-    //         'name' => $request->get('name'),
-    //         'email' => $request->get('email'),
-    //         'user_message' => $request->get('message')
-    //     ), function($message)
-    // {
-    //
-    //     $message->to('love.yoyohoho@gmail.com', 'Admin')->subject('TODOParrot Feedback');
-    // });
+    public function store(Request $request)
+    {
+        //   Mail::send('inquiry.mail
+        //     ',
+        //     array(
+        //         'name' => $request->get('name'),
+        //         'email' => $request->get('email'),
+        //         'user_message' => $request->get('message')
+        //     ), function($message)
+        // {
+        //
+        //     $message->to('love.yoyohoho@gmail.com', 'Admin')->subject('TODOParrot Feedback');
+        // });
 
         return view('inquiry.complete');
 
 
-   }
-
+    }
 
 
 }

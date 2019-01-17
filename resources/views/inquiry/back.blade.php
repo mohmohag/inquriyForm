@@ -41,9 +41,17 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             {!! Form::label('radio-inline', '男性') !!}
-                            {{ Form::radio('gender', '0', false, array('id'=>'penyakit-0')) }}
+                            @if($inquiryform['gender'] == 0 )
+                                {{ Form::radio('gender', '0', true, array('id'=>'penyakit-0')) }}
+                            @else
+                                {{ Form::radio('gender', '0', false, array('id'=>'penyakit-0')) }}
+                            @endif
                             {!! Form::label('radio-inline', '女性') !!}
-                            {{ Form::radio('gender', '1', false, array('id'=>'penyakit-0')) }}
+                             @if($inquiryform['gender'] == 1 )
+                                {{ Form::radio('gender', '1', true, array('id'=>'penyakit-0')) }}
+                            @else
+                                {{ Form::radio('gender', '0', false, array('id'=>'penyakit-0')) }}
+                            @endif
                         </div>
                     </div>
                 </div>
